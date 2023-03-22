@@ -4,12 +4,16 @@ pipeline {
         stage ('Development') {
             steps {
                 sh '''
-                javac sum.java
-                java sum
+                javac Sum.java
+                java Sum
                 '''
                 echo "Build Successful."
             }
         }
     }
+   post {
+           failure {
+               emailext attachLog:true, body: 'Pipeline is failed!', subject: 'Post Build Action Email', to: 'tannu.ahuja@knoldus.com'
+        }
 }
 
