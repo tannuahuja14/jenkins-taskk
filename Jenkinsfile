@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ('Build') {
+        stage ('Development') {
             steps {
                 sh '''
                 javac sum.java
